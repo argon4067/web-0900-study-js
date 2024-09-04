@@ -58,6 +58,7 @@ console.log(Boolean(100)) // true
 
 console.log(Boolean (NaN)) // flase
 console.log(Boolean (null)) // flase
+console.log(Boolean (0)) // flase
 console.log(Boolean (undefined)) // flase
 console.log(Boolean("")) // flase
 console.log(Boolean(" ")) //true
