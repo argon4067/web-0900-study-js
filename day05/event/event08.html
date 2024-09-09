@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트08</title>
+</head>
+<body>
+  <div>
+    <label><input type="checkbox" name="checkTest" value="선택1">선택1</label>
+    <label><input type="checkbox" name="checkTest" value="선택2">선택2</label>
+    <label><input type="checkbox" name="checkTest" value="선택3">선택3</label>
+    <p id="result"></p>
+  </div>
+</body>
+<script>
+  NodeList.prototype.map = Array.prototype.map;
+  // 체크 박스가 3개 모두 선택되면 result에 환영합니다의 메세지를 출력
+  // 체크 박스가 3개 미만이면 result에 아무것도 출력하지 않는다.
+  const checkboxes = document.querySelectorAll("input[type=checkbox]");
+  const p = document.querySelector("#result");
+  console.log(checkboxes,p);
+  
+checkboxes.forEach((check)=>{
+check.addEventListener("click",()=>{
+  
+  checkedd = checkboxes.map((check)=>check.checked).filter((checked) => checked).length === 3;
+  if(checkedd){
+    p.innerText ="환영합니다.";
+  } else{
+    p.innerText ="";
+  }
+})
+})
+
+</script>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트08</title>
+</head>
+<body>
+  <div>
+    <label><input type="checkbox" name="checkTest" value="선택1">선택1</label>
+    <label><input type="checkbox" name="checkTest" value="선택2">선택2</label>
+    <label><input type="checkbox" name="checkTest" value="선택3">선택3</label>
+    <p id="result"></p>
+  </div>
+</body>
+<script>
+  NodeList.prototype.map = Array.prototype.map;
+  NodeList.prototype.filter = Array.prototype.filter;
+  const inputs = document.querySelectorAll("input[type=checkbox]");
+  const pText = document.querySelector("p").innerText;
+
+  // inputs 
+  inputs.forEach(input => {
+    input.addEventListener("click", (e) => {
+      let checkCount = inputs.filter((input) => input.checked).length;
+      let defaultCount = inputs.map((input) => input.checked).length;
+      if(defaultCount === checkCount){
+        pText = "환영합니다!";
+      }else {
+        pText = "";
+      }
+    })
+  })
+  
+</script>
+</html> -->

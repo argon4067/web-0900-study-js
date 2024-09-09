@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클릭이벤트 유효성검사(포커스,블러)</title>
+  <style>
+    input:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <label>
+      <input type="text" name="id" placeholder="아이디를 입력하세요">
+      <p id="id-result"></p>
+    </label>
+    <label>
+      <input type="password" name="password" placeholder="비밀번호를 입력하세요">
+      <p id="password-result"></p>
+    </label>
+    <button type="button">완료</button>
+  </form>
+</body>
+<script>
+  const button = document.querySelector("button[type=button]");
+  const id = document.querySelector("input[type=text]");
+  const password = document.querySelector("input[type=password]");
+  const idResult = document.querySelector("#id-result");
+  const passwordResult = document.querySelector("#password-result");
+  const form = document.querySelector("form")
+  // 유효성 검사
+  // addEventListener
+  // 아이디와 비밀번호의 빈 값을 검사해서 모두 입력했을 때 검증 완료를 alert()로 띄우기!
+
+  // 전역변수로 사용 globalThis
+  globalThis.flag = new Array(false,false);
+
+  id.addEventListener("focus", (e) => {
+    console.log(e)
+    let target = e.target;
+    id.style.border = "solid 1px pink";
+  })
+
+  id.addEventListener("blur", (e) => {
+    let target = e.target;
+    if(!target.value){
+      idResult.innerText = "아이디를 입력하세요.";
+      idResult.style.color ="red";
+      globalThis.flag[0] = false;
+      // target.focus();
+      return;
+    }
+    idResult.innerText = "아이디 굿";
+    idResult.style.color ="blue";
+    id.style.border = "solid 1px black";
+    globalThis.flag[0] = true;
+  })
+
+  // password 로직 만들고
+  // button 눌렀을 때 id와 password가 모두 있다면 전송시키기!
+  password.addEventListener("focus", (e) => {
+    console.log(e)
+    let target = e.target;
+    password.style.border = "solid 1px pink";
+  })
+
+  password.addEventListener("blur", (e) => {
+    let target = e.target;
+    if(!target.value){
+      passwordResult.innerText = "비밀번호를 입력하세요.";
+      passwordResult.style.color ="red";
+      globalThis.flag[1] = false;
+      // target.focus();
+      return;
+    }
+    passwordResult.innerText = "비밀번호 확인";
+    passwordResult.style.color ="blue";
+    password.style.border = "solid 1px black";
+    globalThis.flag[1] = true;
+  })
+
+  // button.addEventListener("click", () => {
+  //   if(!id.value || !password.value){
+  //     alert("재대로 입력해라이")
+  //   } else {
+  //     form.submit();
+  //     alert("전송완료!")
+  //   }
+  // })
+  // 플래그의 값을 필터로 체크할떄
+  // false의 경우 배열에 리턴 값이 들어가지않아 배열이 비게 된다(값이 없다).
+  // 길이 0 != 길이 2
+  // 그래서 길이가 안맞아 조건이 불충족한다.
+  button.addEventListener("click", () => {
+    if(globalThis.flag.filter((check) => check).length != globalThis.flag.length){
+      alert("정보를 입력하세요")
+      return;
+    }
+    form.submit();
+  })
+
+
+
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키 이벤트</title>
+</head>
+<body>
+  <input type="text" name="name" placeholder="이름을 입력하세요."/>
+  <p id="name"></p>
+  
+</body>
+<script>
+  const names = document.querySelector("input[type=text]");
+  const p = document.querySelector("#name");
+  console.log(name, p);
+  // 이름을 입력하고 엔터를 누르면 콘솔에 출력
+  // 이름을 p태그 안에 실시간으로 출력하기
+  names.addEventListener("keypress", (e) => {
+    if(e.key === "Enter"){
+      console.log(e.target.value)
+    }
+  })
+  names.addEventListener("keyup", (e) => {
+    console.log(e);
+      console.log(e.target.value)
+      p.innerText = e.target.value;
+    
+  })
+</script>
+</html>
