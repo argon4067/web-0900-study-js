@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery 최종 실습</title>
+  <style>
+    .body-wrap{
+      display: flex;
+      flex-direction: column;
+      width: 120px;
+      height: 120px;
+    }
+    .table {
+      border: 2px solid black;
+      padding: 0 auto;
+      margin-bottom: 10px;
+    }
+    .table th {
+      border: 2px solid black;
+    }
+    .table tr {
+      border: 2px solid black;
+    }
+    /* .child{
+      background-color: red;
+    } */
+    .table td{
+      border: 2px solid black;
+    }
+
+    .table-heads{
+      border: 2px solid black;
+      background-color: lemonchiffon;
+    }
+
+    .field {
+      display: block;
+      width: 50px;
+    }
+    .field .field-wrap {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="body-wrap">
+    <table class="table">
+      <tr class="table-heads">
+        <th>구분</th>
+        <td>요금</td>
+      </tr>
+      <tr class="child">
+        <th>아동</th>
+        <td>무료</td>
+      </tr>
+      <tr class ="youth">
+        <th>청소년</th>
+        <td>2000</td>
+      </tr>
+      <tr class="adult">
+        <th>성인</th>
+        <td>5000</td>
+      </tr>
+    </table>
+    <form name="form-wrap">
+      <fieldset class="field">
+        <div class="field-wrap">
+          <legend>구분</legend>
+          <input type="text" class="input">
+          <button class="form-button">확인</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</body>
+<script src="./jQuery.js"></script>
+<script>
+  const $button = $(".form-button");
+  const $input = $("input");
+  const $child =$(".child");
+  const $youth =$(".youth");
+  const $adult =$(".adult");
+  // console.log($input)
+  $button.on("click",() => {
+    // console.log(e)
+    // const checkC = $input.attr("value") === "아동";
+    // const checkY = $input.attr("value") === "청소년";
+    // const checkA = $input.attr("value") === "성인";
+    if($input.attr("value") === "아동"){
+      $child.css("background","red")
+    }
+  })
+</script>
+</html>
