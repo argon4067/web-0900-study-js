@@ -1,0 +1,22 @@
+body {
+  /* font-family: ; */
+  font-weight: bold;
+}
+
+table {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+thead {
+  background-color: lemonchiffon;
+}
+
+fieldset {
+  text-align: center;
+  margin: 0 auto;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}

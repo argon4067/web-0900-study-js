@@ -8,13 +8,22 @@
     .body-wrap{
       display: flex;
       flex-direction: column;
-      width: 120px;
-      height: 120px;
+      width: 250px;
+      height: 250px;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      margin-top: 100px;
+      padding-left: 100px;
+    }
+    .body-wrap caption {
+      display: block;
     }
     .table {
       border: 2px solid black;
       padding: 0 auto;
       margin-bottom: 10px;
+      width: 150px;
     }
     .table th {
       border: 2px solid black;
@@ -45,30 +54,33 @@
 </head>
 <body>
   <div class="body-wrap">
-    <table class="table">
-      <tr class="table-heads">
-        <th>구분</th>
-        <td>요금</td>
-      </tr>
-      <tr class="child">
-        <th>아동</th>
-        <td>무료</td>
-      </tr>
-      <tr class ="youth">
-        <th>청소년</th>
-        <td>2000</td>
-      </tr>
-      <tr class="adult">
-        <th>성인</th>
-        <td>5000</td>
-      </tr>
-    </table>
+    <caption>요금표</caption>
+    <form id="table-form">
+      <table class="table">
+        <tr class="table-heads">
+          <th>구분</th>
+          <td>요금</td>
+        </tr>
+        <tr class="child">
+          <th>아동</th>
+          <td>무료</td>
+        </tr>
+        <tr class ="youth">
+          <th>청소년</th>
+          <td>2000</td>
+        </tr>
+        <tr class="adult">
+          <th>성인</th>
+          <td>5000</td>
+        </tr>
+      </table>
+    </form>
     <form name="form-wrap">
       <fieldset class="field">
+        <legend>구분</legend>
         <div class="field-wrap">
-          <legend>구분</legend>
           <input type="text" class="input">
-          <button class="form-button">확인</button>
+          <button type="button" class="form-button">확인</button>
         </div>
       </fieldset>
     </form>
@@ -77,19 +89,57 @@
 <script src="./jQuery.js"></script>
 <script>
   const $button = $(".form-button");
-  const $input = $("input");
+  const $input = $(".input");
   const $child =$(".child");
   const $youth =$(".youth");
   const $adult =$(".adult");
   // console.log($input)
-  $button.on("click",() => {
+  $button.on("click", () => {
     // console.log(e)
-    // const checkC = $input.attr("value") === "아동";
-    // const checkY = $input.attr("value") === "청소년";
-    // const checkA = $input.attr("value") === "성인";
-    if($input.attr("value") === "아동"){
-      $child.css("background","red")
+    const checkC = $input.val() === "아동";
+    const checkY = $input.val() === "청소년";
+    const checkA = $input.val() === "성인";
+    if(checkC){
+      $child.css("background","red");
+      $child.find("th").each((i, th)=>{
+        if($(th).text()=== "아동" ){
+          $(th).text("★아동")
+        }
+      })
+    }else if(checkY){
+      $youth.css("background","red");
+      $youth.find("th").each((i, th)=>{
+        if($(th).text()=== "청소년"){
+          $(th).text("★청소년")
+        }
+      })
+      // $youth.prop("value","★청소년")
+      // $youth.html("★청소년")
+    }else if(checkA){
+      $adult.css("background","red");
+      $adult.find("th").each((i, th)=>{
+        if($(th).text()=== "성인"){
+          $(th).text("★성인")
+        }
+      })
+    }else{
+      alert("다시 입력해주세요.");
+      $input.val();
     }
   })
+// $(document).ready(function(){
+  $("input").focus(function(){
+    $(this).css("outline", "none");
+    $(this).css("border-color", "blue");
+  });
+  $("input").blur(function(){
+    $(this).css("outline", "none");
+    $(this).css("border-color", "black");
+  });
+// });
+  $('form').each(function() {
+    this.reset();
+  })
+
 </script>
 </html>
