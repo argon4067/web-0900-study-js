@@ -1,0 +1,214 @@
+/*
+*  html5resetcss
+*/
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+
+.body-center {
+  width: 1200px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+}
+
+
+/* 헤드부분 */
+.head {
+  display: flex;
+  width: 1200px;
+  height: 100px;
+  position: relative;
+}
+
+.head .head-logo {
+  width: 200px;
+  height: 40px;
+}
+/* 메뉴 부분 */
+.head .menu-wrap {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  margin-left: auto;
+  margin-top: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.head .menu-wrap .main-menu-wrap {
+  display: flex;
+  background-color: lemonchiffon;
+  margin-left: auto;
+  margin-top: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 600px;
+  height: 50%;
+  border: 1px solid black;
+}
+
+.head .main-menu-wrap .main-menu{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  flex : 1;
+}
+
+.head .menu-wrap .sub-menu-wrap {
+  display: flex;
+  margin-left: auto;
+  margin-top: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+}
+
+.head .menu-wrap .sub-menu-wrap .table-menu {
+  width: 600px;
+}
+
+
+.head .menu-wrap .sub-menu-wrap td{
+  width: 150px;
+  height: 100%;
+}
+
+
+
+/* 메인 부분 */
+.main {
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* .main .silde-wrap {
+  display: flex;
+  width: 1200px;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 300px;
+}
+
+.main .silde-wrap .slide {
+  display: flex;
+  width: 3600px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  /* animation: bannermove 9s infinite; */
+/* } */ */
+
+.main .triple {
+  display: flex;
+  flex-direction: row;
+}
+
+.main .triple .c12-wrap {
+  flex: 1;
+  width: 400px;
+  height: 200px;
+}
+
+.main .triple .banner {
+  flex: 1;
+  width: 400px;
+  height: 200px;
+}
+
+.main .triple .goTO {
+  flex: 1;
+  width: 400px;
+  height: 200px;
+
+}
+
+/* reset */
+section { width: 100%;}
+li { display: inline-block; list-style: none; }
+
+/* 슬라이드 */
+.slideWrap {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.slideWrap .imgSlide {
+  display: flex;
+  align-items: center;
+  padding-left: 0; 
+}
+.slideWrap .imgSlide.original {
+   animation: slide01 3s  0s infinite normal forwards running ; 
+  }
+.slideWrap .imgSlide.clone {
+   animation: slide02 9s  3s infinite normal none running ; 
+  }
+.slideWrap .imgSlide li {
+  width: 1200px;
+  height: 300px;
+  text-align: center; 
+}
+
+/** 애니메이션 **/
+/* 원본용 */
+@keyframes slide01 { 
+    0% { transform: translateX(0); }
+    25%{ transform: translateX(-33%);}
+    50% { transform: translateX(-66%); }
+    75%{ transform: translateX(0);}
+}
+
+/* 복제용 */
+@keyframes slide02 { 
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes bannermove {
+  0%{
+    transform: translate(0,0);
+  }
+  50%{
+    transform: translate(0,-100%);
+  }
+  100%{
+    transform: translate(0,-200%);
+  }
+}
